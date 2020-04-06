@@ -65,6 +65,20 @@ class Controller{
       res.status(500).json(err)
     })
   }
+
+  // delete
+  static delete(req,res){
+    Food.findByPk(req.params.id)
+    .then(food=>{
+       return Food.destroy({where: {id:req.params.id}})
+    })
+    .then(food=>{
+        res.status(200).json({message: 'Successfully delete food from your menu'})
+    })
+    .catch(err=>{
+      res.status(500).json(err)
+    })
+  }
 }
 
 module.exports = Controller
