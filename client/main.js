@@ -22,11 +22,11 @@ function login(e) {
     data: { email, password }
   })
     .done(function (data) {
-      fetchFood()
       localStorage.setItem('access_token', data.access_token)
       $('#input-email').val('');
       $('#input-password').val('');
       $('.global').hide();
+      fetchFood()
       $('.app-section').show()
     })
     .fail(function (err) {
@@ -94,7 +94,7 @@ function deleteFood(e){
     if (result.value) {
       Swal.fire(
         'Deleted!',
-        'Your file has been deleted.',
+        'Your food has been deleted.',
         'success'
       )
       $.ajax({
